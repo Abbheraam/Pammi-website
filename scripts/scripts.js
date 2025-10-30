@@ -1228,6 +1228,38 @@ function closePopup() {
 const mainContent = document.querySelector('main');
 const originalContent = mainContent.innerHTML;
 
+// Hamburger menu functionality
+function toggleMobileMenu() {
+  const hamburger = document.getElementById('hamburgerMenu');
+  const middleSection = document.getElementById('middleSection');
+  
+  hamburger.classList.toggle('active');
+  middleSection.classList.toggle('active');
+  
+  // Add delay to links for staggered animation
+  const links = middleSection.querySelectorAll('.header-link');
+  links.forEach((link, index) => {
+    if (middleSection.classList.contains('active')) {
+      // Opening menu - staggered animation
+      setTimeout(() => {
+        link.style.transitionDelay = `${index * 0.1}s`;
+      }, 10);
+    } else {
+      // Closing menu - remove delay
+      link.style.transitionDelay = '0s';
+    }
+  });
+}
+
+// Close mobile menu when clicking on a link
+function closeMobileMenu() {
+  const hamburger = document.getElementById('hamburgerMenu');
+  const middleSection = document.getElementById('middleSection');
+  
+  hamburger.classList.remove('active');
+  middleSection.classList.remove('active');
+}
+
 // Page Navigation Functions
 function showPage(pageId) {
   // If it's a page we have a template for, show that template
@@ -1253,11 +1285,13 @@ function showPage(pageId) {
 function navigateToHome() {
   showPage('home');
   history.pushState(null, '', '#home');
+  closeMobileMenu(); // Close mobile menu when navigating home
 }
 
 function navigateToPage(pageId) {
   showPage(pageId);
   history.pushState(null, '', `#${pageId}`);
+  closeMobileMenu(); // Close mobile menu when navigating to a page
 }
 
 // Add event listeners when DOM loads
@@ -1272,13 +1306,25 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   // Add click handlers for footer links
-  const footerLinks = document.querySelectorAll('footer a[href^="#"]');
+  const footerLinks = document.querySelectorAll('footer a[href^=\"#\"]');
   footerLinks.forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
       const pageId = this.getAttribute('href').substring(1);
       navigateToPage(pageId);
     });
+  });
+  
+  // Add click handler for hamburger menu
+  const hamburgerMenu = document.getElementById('hamburgerMenu');
+  if (hamburgerMenu) {
+    hamburgerMenu.addEventListener('click', toggleMobileMenu);
+  }
+  
+  // Add click handlers for mobile menu links
+  const mobileLinks = document.querySelectorAll('.middle-section .header-link');
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', closeMobileMenu);
   });
   
   // Show initial page based on hash or default to home
