@@ -1,0 +1,4 @@
+*.code-workspace
+.vscode/
+node_modules/
+*.log
