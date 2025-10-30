@@ -574,6 +574,120 @@ main.scrolled {
   z-index: 1;
   overflow: hidden;
   padding-bottom: 35px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 30px 20px;
+}
+
+.hero-title {
+  color: rgb(255, 255, 255);
+  font-size: 50px;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.hero-subtitle {
+  color: rgb(255, 255, 255);
+  font-size: 50px;
+  margin: 0 0 5px 0;
+  font-weight: bold;
+}
+
+.hero-description {
+  color: rgb(255, 255, 255);
+  font-size: 25px;
+  margin: 5px 0 0 0;
+  font-weight: normal;
+  max-width: 90%;
+}
+
+/* Responsive design for hero section */
+@media (max-width: 768px) {
+  /* Hero section responsive */
+  .hero-title,
+  .hero-subtitle {
+    font-size: 32px !important;
+    margin: 20px auto !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+  
+  .hero-description {
+    font-size: 18px !important;
+    margin: 20px auto !important;
+    text-align: center !important;
+    width: 90% !important;
+    padding: 0 20px !important;
+  }
+  
+  /* Video responsive */
+  .video-glow-container {
+    margin: 20px auto !important;
+    width: 100% !important;
+    padding: 0 20px;
+    border-radius: 30px;
+  }
+  
+  .video-glow-container video {
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+  
+  .green-glow-effect {
+    width: 280px;
+    height: 120px;
+    top: -860px;
+  }
+  
+  .concepts-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .cta-title {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title,
+  .hero-subtitle {
+    font-size: 28px;
+  }
+  
+  .hero-description {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title,
+  .hero-subtitle {
+    font-size: 28px;
+  }
+  
+  .hero-description {
+    font-size: 16px;
+  }
 }
 
 /* Animated Stars */
@@ -604,7 +718,7 @@ main.scrolled {
     radial-gradient(1px 1px at 1200px 100px, rgba(102, 126, 234, 0.8), transparent),
     radial-gradient(2px 2px at 1300px 80px, white, transparent),
     radial-gradient(1px 1px at 1400px 40px, white, transparent),
-    radial-gradient(1px 1px at 1500px 120px, white, transparent),
+    radial-gradient(2px 2px at 1500px 120px, white, transparent),
     radial-gradient(2px 2px at 150px 200px, white, transparent),
     radial-gradient(1px 1px at 350px 220px, rgba(102, 126, 234, 0.8), transparent),
     radial-gradient(1px 1px at 550px 180px, white, transparent),
@@ -1049,14 +1163,15 @@ padding-bottom: 70px;
 /* Additional Responsive Styles */
 @media (max-width: 768px) {
   /* Hero section responsive */
-  .hero-section h1 {
+  .hero-title,
+  .hero-subtitle {
     font-size: 32px !important;
     margin: 20px auto !important;
     text-align: center !important;
     width: 100% !important;
   }
   
-  .hero-section + h2 {
+  .hero-description {
     font-size: 18px !important;
     margin: 20px auto !important;
     text-align: center !important;
